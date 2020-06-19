@@ -11,14 +11,14 @@ double hit_sphere(const vec3d *sphere_origin, double radius, const ray *r)
     vec3d oc = vec3d_sub(ray_origin(r), sphere_origin);
     // a => ray_direction(r) . ray_direction(r)
     double a = vec3d_squared_length(ray_direction(r));
-    double b = vec3d_dot(&oc, ray_direction(r));
+    double half_b = vec3d_dot(&oc, ray_direction(r));
     double c = vec3d_squared_length(&oc) - (radius * radius);
-    double discriminant = (b * b) - (a * c);
+    double discriminant = (half_b * half_b) - (a * c);
     if (discriminant < 0.)
     {
         return -1.;
     }
-    return (-b - sqrt(discriminant)) / a;
+    return (-half_b - sqrt(discriminant)) / a;
 }
 
 vec3d ray_get_color(const ray *r)
