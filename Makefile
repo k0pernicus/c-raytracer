@@ -26,7 +26,7 @@ objects/object.o: objects/sphere.h
 .PHONY: clean mrproper
 
 clean:
-	rm -rf *.o
+	rm -rf *.o objects/*.o
 
 mrproper: clean
 	rm -rf $(EXEC)
