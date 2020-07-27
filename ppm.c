@@ -6,9 +6,9 @@
 #include "ray.h"
 
 // HEIGHT defines the length of the image to output
-const int HEIGHT = 100;
+const int HEIGHT = 400;
 // WIDTH defines the width of the image to output
-const int WIDTH = 200;
+const int WIDTH = 800;
 
 void to_stdout(const ppm_buffer data)
 {
