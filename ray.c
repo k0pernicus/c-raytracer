@@ -6,7 +6,7 @@ vec3d *ray_direction(const ray *r) { return r->B; }
 
 static vec3d sphere_origin = {0., 0., -1.};
 
-double hit_sphere(const vec3d *sphere_origin, double radius, const ray *r)
+double sphere_hit(const vec3d *sphere_origin, double radius, const ray *r)
 {
     vec3d oc = vec3d_sub(ray_origin(r), sphere_origin);
     // a => ray_direction(r) . ray_direction(r)
@@ -21,9 +21,12 @@ double hit_sphere(const vec3d *sphere_origin, double radius, const ray *r)
     return (-half_b - sqrt(discriminant)) / a;
 }
 
-vec3d ray_get_color(const ray *r)
+double sphere_hit_from_origin(double radius, const ray *r) {
+    return sphere_hit(&sphere_origin, radius, r);
+}
+
+vec3d sphere_get_color(const ray *r, double t)
 {
-    double t = hit_sphere(&sphere_origin, 0.5, r);
     // Sphere has been hitten
     if (t > 0.0)
     {
