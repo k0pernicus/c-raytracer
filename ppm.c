@@ -4,6 +4,7 @@
 #include "ppm.h"
 #include "vec3d.h"
 #include "ray.h"
+#include "objects/objects.h"
 
 // HEIGHT defines the length of the image to output
 const int HEIGHT = 400;
@@ -74,8 +75,11 @@ ppm_buffer generate_gradient_data_from(const vec3d *camera)
                 camera,
                 &tmp_lower_u_v,
             };
-            double t = sphere_hit_from_origin(0.5, &r);
-            const vec3d blended_value = sphere_get_color(&r, t);
+            object o;
+            o.sphere = 1;
+            o.concrete.sphere_ray = &r;
+            double t = hit_from_origin(&o, 0.5);
+            const vec3d blended_value = get_color(&o, t);
             const int c_colors[3] = {(int)(255.99 * blended_value.x), (int)(255.99 * blended_value.y), (int)(255.99 * blended_value.z)};
             for (int c_color_index = 0; c_color_index < 3; c_color_index++)
             {
