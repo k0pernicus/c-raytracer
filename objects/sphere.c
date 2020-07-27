@@ -1,6 +1,14 @@
 #include "sphere.h"
 #include "../vec3d.h"
 #include "../ray.h"
+#include "object.h"
+
+object new_sphere(const ray *r) {
+    object o;
+    o.sphere = 1;
+    o.concrete.sphere_ray = r;
+    return o;
+}
 
 static vec3d sphere_origin = {0., 0., -1.};
 

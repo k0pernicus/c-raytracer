@@ -3,7 +3,7 @@ CFLAGS=-W -Wall -ansi -pedantic -std=c11
 LDFLAGS=-lm
 EXEC=raytracer
 EXEC_DEBUG=$(EXEC)_debug
-SRC= vec3d.c ray.c ppm.c raytracer.c objects/sphere.c objects/objects.c
+SRC= vec3d.c ray.c ppm.c raytracer.c objects/sphere.c objects/object.c
 OBJ= $(SRC:.c=.o)
 
 release: CFLAGS += -O2
@@ -17,7 +17,7 @@ debug: $(OBJ)
 ppm.o: vec3d.h ray.h
 ray.o: vec3d.h
 objects/sphere.o: vec3d.h ray.h
-objects/objects.o: objects/sphere.h
+objects/object.o: objects/sphere.h
 
 
 %.o: %.c

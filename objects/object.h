@@ -1,5 +1,5 @@
-#ifndef OBJECTS
-#define OBJECTS
+#ifndef OBJECT
+#define OBJECT
 
 #include "../ray.h"
 #include "../vec3d.h"
@@ -16,4 +16,4 @@ double hit(const object *, const vec3d *, double);
 double hit_from_origin(const object *, double radius);
 vec3d get_color(const object *, double t);
 
-#endif // OBJECTS
+#endif // OBJECT

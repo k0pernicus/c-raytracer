@@ -1,4 +1,4 @@
-#include "objects.h"
+#include "object.h"
 #include "sphere.h"
 #include <stdio.h>
 #include <errno.h>
